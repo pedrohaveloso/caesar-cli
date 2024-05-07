@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
+
 const char *ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
 /**
@@ -38,19 +40,40 @@ int help(void)
   return 0;
 }
 
-int encode()
+int encode(char *w, int shift)
+{
+  for (size_t i = 0; w[i]; i++)
+  {
+    int letter_i = strchr(ALPHABET, tolower(w[i])) - ALPHABET;
+
+    if (letter_i < 0 || letter_i > 25 || &letter_i == NULL)
+    {
+      continue;
+    }
+
+    letter_i = letter_i + shift;
+
+    if (letter_i > 25)
+    {
+      letter_i = letter_i - 26;
+    }
+
+    w[i] = ALPHABET[letter_i];
+  }
+
+  printf("%s\n", w);
+
+  return 0;
+}
+
+int decode(char *w, int shift)
 {
   return 0;
 }
 
-int decode()
+bool is_valid_option(char *o)
 {
-  return 0;
-}
-
-bool is_valid_option(char *option)
-{
-  return strcmp(option, "encode") == 0 || strcmp(option, "decode") == 0;
+  return strcmp(o, "encode") == 0 || strcmp(o, "decode") == 0;
 }
 
 int main(int argc, char **argv)
