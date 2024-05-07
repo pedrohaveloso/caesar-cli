@@ -26,10 +26,11 @@ int help(void)
 {
   printf("\n"
          "To encode and decode a word in the Caesar cipher, "
-         "you can follow the examples:\n"
+         "do the same as the examples:\n"
          "\n"
          "  $ caesar encode \"hello world\"\n"
          "  $ caesar encode \"hello world\" 7\n"
+         "\n"
          "  $ caesar decode \"khoor zruog\"\n"
          "  $ caesar decode \"olssv dvysk\" 7\n"
          "\n"
@@ -44,19 +45,16 @@ int encode(char *w, int shift)
 {
   for (size_t i = 0; w[i]; i++)
   {
-    int letter_i = strchr(ALPHABET, tolower(w[i])) - ALPHABET;
+    char *letter_ptr = strchr(ALPHABET, tolower(w[i]));
 
-    if (letter_i < 0 || letter_i > 25 || &letter_i == NULL)
+    if (letter_ptr == NULL)
     {
       continue;
     }
 
-    letter_i = letter_i + shift;
+    int letter_i = letter_ptr - ALPHABET;
 
-    if (letter_i > 25)
-    {
-      letter_i = letter_i - 26;
-    }
+    letter_i = (letter_i + shift) % 26;
 
     w[i] = ALPHABET[letter_i];
   }
@@ -68,6 +66,24 @@ int encode(char *w, int shift)
 
 int decode(char *w, int shift)
 {
+  for (size_t i = 0; w[i]; i++)
+  {
+    char *letter_ptr = strchr(ALPHABET, tolower(w[i]));
+
+    if (letter_ptr == NULL)
+    {
+      continue;
+    }
+
+    int letter_i = letter_ptr - ALPHABET;
+
+    letter_i = (letter_i - shift + 26) % 26;
+
+    w[i] = ALPHABET[letter_i];
+  }
+
+  printf("%s\n", w);
+
   return 0;
 }
 
