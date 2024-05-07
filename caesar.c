@@ -37,7 +37,42 @@ int help(void)
   return 0;
 }
 
+int encode()
+{
+  return 0;
+}
+
+int decode()
+{
+  return 0;
+}
+
 bool is_valid_option(char *option)
 {
   return strcmp(option, "encode") == 0 || strcmp(option, "decode") == 0;
+}
+
+int main(int argc, char **argv)
+{
+  if (argc <= 1 || !is_valid_option(argv[1]) || argv[2] == NULL)
+  {
+    return help();
+  }
+
+  int shift = 3;
+
+  if (argv[3] != NULL)
+  {
+    sscanf(argv[3], "%d", &shift);
+  }
+
+  if (strcmp(argv[1], "encode") == 0)
+  {
+    return encode(argv[2], shift);
+  }
+
+  if (strcmp(argv[1], "decode") == 0)
+  {
+    return decode(argv[2], shift);
+  }
 }
