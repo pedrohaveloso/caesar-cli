@@ -36,3 +36,8 @@ int help(void)
 
   return 0;
 }
+
+bool is_valid_option(char *option)
+{
+  return strcmp(option, "encode") == 0 || strcmp(option, "decode") == 0;
+}
