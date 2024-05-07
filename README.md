@@ -6,6 +6,7 @@ Encode and decode sentences in the Caesar cipher with this CLI.
 
 ### Clone the repository:
 `user@pc:~/Downloads$ git pull https://github.com/pedrohaveloso/caesar-cli.git`
+
 `user@pc:~/Downloads$ cd ./caesar-cli`
 
 ### Compile:
@@ -21,6 +22,6 @@ Default shift is 3. Examples:
 
     $ caesar encode "hello world" => "khoor zruog"
     $ caesar encode "hello world" 7 => "olssv dvysk"
-    
+
     $ caesar decode "khoor zruog" => "hello world"
     $ caesar decode "olssv dvysk" 7 => "hello world"
