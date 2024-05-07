@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+const char *ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
 /**
  * Caesar cipher cli encoder/decoder.
