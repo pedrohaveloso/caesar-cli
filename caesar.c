@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
 /**
  * Caesar cipher cli encoder/decoder.
  *
@@ -15,3 +19,20 @@
 /**
  * Print help message.
  */
+int help(void)
+{
+  printf("\n"
+         "To encode and decode a word in the Caesar cipher, "
+         "you can follow the examples:\n"
+         "\n"
+         "  $ caesar encode \"hello world\"\n"
+         "  $ caesar encode \"hello world\" 7\n"
+         "  $ caesar decode \"khoor zruog\"\n"
+         "  $ caesar decode \"olssv dvysk\" 7\n"
+         "\n"
+         "To set the shift, use a number <VALUE> after "
+         "the phrase to be encoded/decoded.\n"
+         "\n");
+
+  return 0;
+}
